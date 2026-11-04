@@ -314,7 +314,7 @@ const totalPayable = subtotal + gstAmount
           </div>
 
           <p className="status">
-            Status: <span>{order.orderStatus || order.status || "-"}</span>
+            Status: <span>{formatEnquiryStatus(order)}</span>
           </p>
         </div>
 

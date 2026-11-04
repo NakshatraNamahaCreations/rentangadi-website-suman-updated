@@ -7,14 +7,17 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        // Hosted backend (Render). Swap the blocks to point elsewhere.
-        target: 'https://rentangadi-backend-suman.onrender.com',
+        // Local backend. The enquiry list reports how far each enquiry got
+        // (pipelineStatus), which the hosted copy does not have yet - so the
+        // site reads the one running here. Swap the blocks to point elsewhere.
+        target: 'http://localhost:8000',
         changeOrigin: true,
-        secure: true,
+        secure: false,
 
-        // target: 'http://localhost:8000',
+        // Hosted backend (Render).
+        // target: 'https://rentangadi-backend-suman.onrender.com',
         // changeOrigin: true,
-        // secure: false,
+        // secure: true,
 
         // target: 'https://api.rentangadi.in',
         // changeOrigin: true,

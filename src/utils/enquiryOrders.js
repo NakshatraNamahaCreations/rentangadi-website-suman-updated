@@ -91,14 +91,32 @@ export function getRawStatusFromOrder(order) {
 }
 
 /**
+ * The stage the CRM reports for an enquiry, in the same four words the
+ * admin enquiry list uses, so a client and the office read one wording.
+ */
+const STAGE_LABEL = {
+  pending: "Pending",
+  sent: "Quotation Sent",
+  confirmed: "Confirmed",
+  cancelled: "Cancelled",
+}
+
+/**
  * What to call an enquiry's state, in words a customer can act on.
  *
- * The record stores "not send" until a quotation goes out and "sent"
- * afterwards; an order made from it carries Confirm/cancelled. Those are
- * the only values that occur, so the mapping covers them and falls back to
- * whatever came through for anything new.
+ * How far a job actually got is two documents away - in the quotation raised
+ * from the enquiry and the order raised from that quotation - so the list
+ * endpoint folds it into `pipelineStatus` and that is what the card shows.
+ *
+ * An enquiry held only in this browser, moments after it was submitted, has
+ * no stage yet: it stores "not send" until a quotation goes out and "sent"
+ * afterwards, which is what the rest of this reads.
  */
 export function formatEnquiryStatus(order) {
+  const stage =
+    STAGE_LABEL[String(order?.pipelineStatus || "").toLowerCase()]
+  if (stage) return stage
+
   const status = order?.orderStatus || order?.status || ""
   const lower = String(status).toLowerCase().trim()
 
@@ -224,6 +242,12 @@ export function getGstTotalsFromSubtotal(subtotal) {
 // }
 
 export function isConfirmedEnquiry(order) {
+  /* The stage already says this exactly; the lines below are the older
+     guess, kept for an enquiry this browser has not yet heard back on. */
+  if (order?.pipelineStatus) {
+    return String(order.pipelineStatus).toLowerCase() === "confirmed"
+  }
+
   const status =
     order.orderStatus || order.status || ""
 
