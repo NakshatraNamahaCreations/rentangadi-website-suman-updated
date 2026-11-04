@@ -1,0 +1,25 @@
+/* Confirmed Orders — green-ivory shell vs My Enquiries cream ivory */
+
+.confirmed-orders-page {
+  background: linear-gradient(180deg, #eef4ef 0%, #f5f0e8 45%, #f8f5ef 100%);
+}
+
+.confirmed-orders-page .orders-empty {
+  border-color: #c8dcc8;
+}
+
+.confirmed-orders-page .order-card--confirmed {
+  border-color: #b8d4b8;
+  background: #fdfdfa;
+  box-shadow: 0 2px 12px rgba(46, 90, 52, 0.06);
+}
+
+.confirmed-orders-page .order-card--confirmed .order-card-header {
+  background: linear-gradient(180deg, #e8f2ea 0%, #f5f0e8 100%);
+  border-bottom-color: #c8dcc8;
+}
+
+.confirmed-orders-page .order-card--confirmed .order-product-row {
+  background: #f0f9f1;
+  border-color: #d4e5d6;
+}

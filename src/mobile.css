@@ -1,0 +1,492 @@
+/* ===========================================================================
+   Phone polish.
+   The layout already reflows to a phone - nothing scrolls sideways at 390px.
+   What it did not do is give a thumb anything to hit: header buttons were
+   32x32, the add button on every card 32x42, quantity and search fields 34px
+   and under, and the footer and contact links about 23px tall. Apple and
+   Google both put the floor at 44px, so that is what these rules set, along
+   with lifting the handful of labels that were under 12px.
+
+   Everything here is scoped to a phone-sized screen; the desktop look is
+   untouched. Selectors are written to out-specify the rules they correct so
+   that none of this needs !important.
+   =========================================================================== */
+
+@media (max-width: 768px) {
+  /* ---- Header ---- */
+
+  /* Cart, account and the login/logout button. */
+  .main-header .nav-btn,
+  .main-header .nav-btn-cart,
+  .main-header .nav-btn-ghost {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px 12px;
+    justify-content: center;
+  }
+
+  .main-header .hamburger-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* The slide-in menu's own links and close button. */
+  .mobile-menu a,
+  .mobile-nav-link,
+  .main-header .mobile-close-btn {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .main-header .mobile-close-btn {
+    min-width: 44px;
+    justify-content: center;
+  }
+
+  /* ---- Add-to-cart button on product cards ---- */
+
+  /* GallerySection sets 48px, BestSellers overrides it down to 32px with a
+     two-class selector; both are matched here so the button is one size. */
+  .product-card-plus-btn,
+  .best-sellers-card-image-wrap .product-card-plus-btn,
+  .bs-card-image-wrap .product-card-plus-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+  }
+
+  /* ---- Quantity selector ---- */
+
+  /* The row carries a fixed 36px height, so the field inside has to be given
+     room rather than just a minimum, or it overflows its own border. */
+  .qty-input-row {
+    height: 44px;
+  }
+
+  .qty-step-btn {
+    min-height: 44px;
+  }
+
+  /* flex: 1 with min-width: 0 let the field collapse to 16px inside a narrow
+     card. A floor keeps the number readable and tappable. */
+  .qty-input {
+    min-width: 36px;
+    /* 16px keeps iOS Safari from zooming the page in when the field is
+       focused, which on a phone reads as the layout breaking. */
+    font-size: 16px;
+  }
+
+  .qty-available {
+    font-size: 12px;
+  }
+
+  /* ---- Search fields ---- */
+
+  .hero-search-input,
+  .category-search-input,
+  .bs-search-input,
+  .products-search-input {
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  /* The wrappers carry the border, so they grow with the field inside. */
+  .hero-search-box,
+  .category-search-box,
+  .bs-search-box {
+    min-height: 44px;
+  }
+
+  /* ---- Product details ---- */
+
+  /* The name is printed twice on this page: once in the header strip and
+     again, larger, under the image. On a phone the header copy wrapped onto
+     its own line between the two buttons, which read as a mistake. The one
+     under the image is the one to keep. */
+  .product-details-header .product-details-page-title {
+    display: none;
+  }
+
+  .product-details-header {
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+
+  /* The frame is a square and the photos are wide - a 984x429 product in a
+     362px square is letterboxed, and on a phone that dead band costs most of
+     the space above the fold. Letting the frame follow the photo keeps the
+     whole image visible and brings the name and price up with it. The bounds
+     stop a very tall or very wide photo from taking over. */
+  .product-details-image-wrap .product-image-box {
+    aspect-ratio: auto;
+    min-height: 140px;
+  }
+
+  .product-details-image-wrap .product-details-image {
+    aspect-ratio: auto;
+    height: auto;
+    max-height: 62vh;
+  }
+
+  .color-circle {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 12px;
+  }
+
+  /* The "default" variant is a pill with a word in it rather than a swatch,
+     and it set its own 10px type, so it needs matching specificity. */
+  .color-circle.default {
+    min-height: 44px;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  /* ---- Footer ---- */
+
+  /* The anchors were 23px tall. Padding grows the hit area without changing
+     how the list reads. */
+  .footer-list a,
+  .footer-list span,
+  .footer-contact-list a,
+  .footer-contact-list span {
+    min-height: 44px;
+    padding-block: 6px;
+  }
+
+  .footer-list li {
+    margin-bottom: 4px;
+  }
+
+  /* The credit link sits inside a sentence, so it gets height from padding
+     rather than becoming a block of its own. */
+  a.footer-dev-link {
+    display: inline-block;
+    padding-block: 12px;
+  }
+
+  /* ---- Contact page ---- */
+
+  /* The phone number and email are the two things a visitor taps here. */
+  a.contact-card-value {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .contact-card-label {
+    font-size: 12px;
+  }
+
+  /* ---- Forms ---- */
+
+  /* Same iOS zoom guard, for every text field on the site. */
+  input[type='text'],
+  input[type='tel'],
+  input[type='email'],
+  input[type='number'],
+  input[type='search'],
+  input[type='date'],
+  input[type='password'],
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  input:not([type='checkbox']):not([type='radio']),
+  select,
+  textarea,
+  button {
+    min-height: 44px;
+  }
+
+  /* ---- Top information bar ---- */
+
+  /* The phone number up here is the fastest way to reach the business from a
+     phone, and it was a 23px tap target. */
+  .top-bar-link {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* ---- Touch feedback ---- */
+
+  a,
+  button,
+  [role='button'] {
+    -webkit-tap-highlight-color: rgba(189, 85, 37, 0.14);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Very small phones.
+   A two-up grid leaves each card about 102px of usable width, which is not
+   enough for a name, a price and a quantity stepper side by side - the field
+   between the two step buttons collapsed to nothing. One card per row gives
+   them all room.
+   --------------------------------------------------------------------------- */
+
+@media (max-width: 360px) {
+  /* Only the product grid. The category tiles above it carry a picture and a
+     name and read fine two-up. */
+  .best-sellers-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Phones with a notch or a home indicator: keep fixed furniture clear of it. */
+@supports (padding: env(safe-area-inset-bottom)) {
+  @media (max-width: 768px) {
+    .whatsapp-float {
+      bottom: calc(18px + env(safe-area-inset-bottom));
+    }
+
+    .view-cart-banner {
+      padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    }
+  }
+}
+
+/* ===========================================================================
+   App shell
+   A phone should read as an app, not as a desktop page that has been squeezed.
+   The bottom tab bar (MobileTabBar) carries navigation; these rules give it
+   room, trim the header down to what a phone needs, and add the press
+   feedback a touch screen expects in place of hover.
+   =========================================================================== */
+
+@media (max-width: 768px) {
+  /* ---- Room for the tab bar ---- */
+
+  /* Every page ends above the bar rather than under it. */
+  body {
+    padding-bottom: calc(60px + env(safe-area-inset-bottom));
+  }
+
+  /* The floating button sits above the bar, not behind it. */
+  .whatsapp-float {
+    bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+
+  /* ---- Header ---- */
+
+  /* The phone number and the full postal address are desktop furniture; on a
+     phone they cost a whole band of the first screen. The number is still a
+     tap away under Contact, and in the footer. */
+  .header-top-bar {
+    display: none;
+  }
+
+  /* An app header stays put while the page moves under it. */
+  .main-header {
+    position: sticky;
+    top: 0;
+    /* Above the tab bar. Making the header sticky gives it a stacking
+       context, and the menu drawer lives inside it - at 1200 the drawer
+       could not rise over the bar however high its own z-index went.
+       The two never share space, so this costs nothing. */
+    z-index: 1650;
+    background: #fff;
+    box-shadow: 0 1px 0 rgba(189, 85, 37, 0.1);
+  }
+
+  .main-nav-bar {
+    padding-block: 4px;
+  }
+
+  /* Cart now has its own tab, so the header copy is redundant. */
+  .nav-actions .nav-btn-cart {
+    display: none;
+  }
+
+  /* ---- Press feedback ---- */
+
+  /* A touch screen has no hover, so the press itself has to answer. */
+  .best-sellers-card:active,
+  .category-card:active,
+  .order-card-simple:active {
+    transform: scale(0.985);
+  }
+
+  .best-sellers-card,
+  .category-card,
+  .order-card-simple {
+    transition: transform 0.14s ease;
+  }
+
+  .product-card-plus-btn:active,
+  .product-add-btn:active,
+  .qty-step-btn:active {
+    transform: scale(0.93);
+  }
+
+  /* ---- Card surfaces ---- */
+
+  /* Softer corners and a lighter shadow read as app cards rather than as
+     boxes on a page. */
+  .best-sellers-card,
+  .category-card {
+    border-radius: 14px;
+  }
+
+  /* ---- Momentum scrolling for the horizontal strips ---- */
+
+  .product-thumbnails {
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+  }
+
+  .product-thumbnails > * {
+    scroll-snap-align: start;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   One-row app header
+   The wrapper is a two-column grid, so the action icons dropped to a second
+   row and the header stood 113px tall - a seventh of the screen before any
+   content. Laid out as a single row it comes to about 56px, which is what a
+   phone app header costs.
+   --------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .main-nav-bar .nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .main-nav-bar .nav-wrapper > .hamburger-btn,
+  .main-nav-bar .nav-wrapper > .nav-actions {
+    flex: 0 0 auto;
+  }
+
+  /* The logo takes the middle and stays centred between the two controls. */
+  .main-nav-bar .nav-wrapper > .nav-logo {
+    flex: 1 1 auto;
+    min-width: 0;
+    justify-content: center;
+  }
+
+  .nav-logo .logo-img {
+    max-height: 38px;
+    width: auto;
+  }
+
+  /* 60px of hamburger is more than the icon needs next to a centred logo. */
+  .main-header .hamburger-btn {
+    width: 44px;
+    padding: 10px;
+  }
+
+  /* ---- Floating button ---- */
+
+  /* Smaller, and lifted clear of the tab bar, so it reads as floating over
+     the page rather than as part of the furniture at the bottom. */
+  .whatsapp-float {
+    width: 46px;
+    height: 46px;
+    box-shadow: 0 6px 18px rgba(37, 211, 102, 0.34);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Product page: the buy action comes to the thumb
+   The page runs 2433px and Add to Cart sat 1381px down it, so the one thing
+   the page exists for needed 581px of scrolling to reach. Pinning it above the
+   tab bar is what an app does, and it costs nothing from the page itself - the
+   quantity stepper stays up with the specifications it belongs to.
+   --------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .product-details-add {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: calc(66px + env(safe-area-inset-bottom));
+    z-index: 1350;
+
+    width: auto;
+    min-height: 48px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(189, 85, 37, 0.3);
+  }
+
+  /* The pinned button is out of flow, so the page needs the room back or its
+     last rows sit underneath it. */
+  .product-details-page {
+    padding-bottom: 76px;
+  }
+
+  /* Cart has its own tab now, so the copy in this page's header is noise. */
+  .product-details-header .category-products-cart-btn {
+    display: none;
+  }
+
+  /* Same for the "Back to Home" buttons these pages carry: Home is a tab. */
+  .products-page-back,
+  .about-page-back,
+  .contact-page-back {
+    display: none;
+  }
+}
+
+/* The floating button and the pinned Add to Cart both want the bottom-right
+   corner. On a product page the buy action wins and the float steps above it.
+   The float is rendered beside the page rather than inside it, so the page is
+   identified from the body. */
+@media (max-width: 768px) {
+  body:has(.product-details-page) .whatsapp-float {
+    bottom: calc(126px + env(safe-area-inset-bottom));
+  }
+}
+
+/* The logo is also the way home, so it gets a full tap target even though the
+   mark itself is capped at 38px. */
+@media (max-width: 768px) {
+  .nav-logo > a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   The menu drawer is a modal surface
+   It was set to z-index 1200, below the tab bar at 1400, so the bar floated on
+   top of an open drawer. A drawer covers the page, tab bar included.
+   --------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  .mobile-menu-backdrop {
+    z-index: 10;
+  }
+
+  .mobile-menu {
+    z-index: 20;
+  }
+
+  /* A green circle hovering over the dimmed page reads as a stray element,
+     so the float stands down while the drawer is open. */
+  body:has(.mobile-menu.open) .whatsapp-float {
+    display: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   A dialog takes over the phone
+   The overlay already paints above the tab bar and the floating button, but a
+   40% scrim leaves both of them legible underneath, which reads as the dialog
+   overlapping the furniture rather than replacing it. While a dialog is open
+   they stand down.
+   --------------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+  body:has(.order-modal-overlay) .tabbar,
+  body:has(.order-modal-overlay) .whatsapp-float {
+    display: none;
+  }
+}

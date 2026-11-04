@@ -1,0 +1,92 @@
+.post-login-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 200px);
+  padding: 24px 16px;
+}
+
+.post-login-welcome-card {
+  max-width: 440px;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #e5ddd2;
+  border-radius: 12px;
+  padding: 40px 32px 36px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* logo.png includes wordmark under the monogram; crop so only the RA mark shows */
+.post-login-welcome-logo-crop {
+  margin: 0 auto 28px;
+  width: min(100%, 260px);
+  height: 132px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.post-login-welcome-logo {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  margin: 0;
+}
+
+.post-login-welcome-title {
+  font-family: var(--glida);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 12px;
+  line-height: 1.3;
+}
+
+.post-login-welcome-text {
+  font-size: 0.98rem;
+  color: #3e4a5e;
+  line-height: 1.5;
+  margin: 0 0 28px;
+}
+
+.post-login-welcome-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.post-login-welcome-btn {
+  font-family: var(--glida);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.post-login-welcome-btn-primary {
+  background: rgb(189, 85, 37);
+  color: #fff;
+}
+
+.post-login-welcome-btn-primary:hover {
+  background: #5a2f1d;
+}
+
+.post-login-welcome-btn-secondary {
+  background: transparent;
+  color: #3e4a5e;
+  border: 1px solid #d4c9b8;
+}
+
+.post-login-welcome-btn-secondary:hover {
+  border-color: rgb(189, 85, 37);
+  color: rgb(189, 85, 37);
+}

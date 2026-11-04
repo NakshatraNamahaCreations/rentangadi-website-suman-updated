@@ -1,0 +1,192 @@
+/* Festival Offer Section - Two column banner */
+
+.festival-offer-section {
+  padding-bottom: 30px;
+  font-family: var(--glida);
+  overflow: hidden;
+}
+
+.festival-offer-wrapper {
+  position: relative;
+}
+
+.festival-offer-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 280px;
+  align-items: center;
+}
+
+/* Left - Image */
+.festival-offer-col-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.festival-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  min-height: 280px;
+  overflow: hidden;
+}
+
+.festival-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 999;
+  display: block;
+}
+
+.festival-offer-wrapper .festival-image::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 0%;
+  left: 50%;
+  top: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%) rotate(-45deg);
+  z-index: 1;
+  transition: height 600ms linear, background-color 600ms linear;
+}
+
+.festival-offer-wrapper:hover .festival-image::after {
+  height: 250%;
+  background-color: transparent;
+}
+
+/* Right - Content */
+.festival-offer-col-content {
+  background: rgb(189, 85, 37);
+  display: flex;
+  align-items: center;
+  padding: 28px 32px;
+  position: relative;
+}
+
+.festival-content {
+
+  color: #fff;
+}
+
+.festival-subtitle {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 6px;
+}
+
+.festival-title {
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 12px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.festival-desc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.festival-offer-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+.festival-offer-box h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.festival-offer-box h3 br {
+  display: block;
+}
+
+.festival-product {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 4px;
+}
+
+.festival-tagline {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 16px;
+}
+
+.festival-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #fff;
+  color: rgb(189, 85, 37);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-family: var(--glida);
+}
+
+.festival-btn:hover {
+  background: rgb(189, 85, 37);
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .festival-offer-row {
+    grid-template-columns: 1fr;
+  }
+
+  .festival-offer-col-content {
+    padding: 24px 20px;
+    order: 1;
+  }
+
+  .festival-offer-col-image {
+    order: 2;
+  }
+
+  .festival-image {
+    min-height: 240px;
+  }
+}
+
+@media (max-width: 576px) {
+  .festival-offer-col-content {
+    padding: 20px 16px;
+  }
+
+  .festival-image {
+    min-height: 200px;
+  }
+
+  .festival-offer-box {
+    width: 64px;
+    height: 64px;
+  }
+
+  .festival-offer-box h3 {
+    font-size: 0.85rem;
+  }
+}

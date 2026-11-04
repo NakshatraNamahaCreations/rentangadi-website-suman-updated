@@ -1,0 +1,341 @@
+/* ── Overlay ──────────────────────────────────────────── */
+.login-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 10, 3, 0.65);
+  backdrop-filter: blur(6px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+/* ── Modal card ───────────────────────────────────────── */
+.login-modal {
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  font-family: var(--glida);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Close button ─────────────────────────────────────── */
+.login-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 13px;
+  cursor: pointer;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 1;
+}
+
+.login-modal-close:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Branded header ───────────────────────────────────── */
+.login-modal-header {
+  background: linear-gradient(145deg, #bd5525 0%, #8a3a18 60%, #5c2510 100%);
+  padding: 36px 36px 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-modal-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top right, rgba(255, 200, 150, 0.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* ── Logo ─────────────────────────────────────────────── */
+.login-modal-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.login-modal-logo-badge {
+  background: #fff;
+  border-radius: 14px;
+  padding: 8px 20px;
+  display: inline-flex;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.login-modal-logo-badge img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
+}
+
+.login-modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.login-modal-subtitle {
+  font-size: 13px;
+  color: rgba(255, 220, 190, 0.85);
+  margin: 0;
+}
+
+/* ── Body ─────────────────────────────────────────────── */
+.login-modal-body {
+  padding: 28px 32px 28px;
+  overflow-y: auto;
+}
+
+/* ── Form ─────────────────────────────────────────────── */
+.login-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ── Fields ───────────────────────────────────────────── */
+.login-modal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.login-modal-field label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #7a5c3a;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.login-modal-field label svg {
+  width: 13px;
+  height: 13px;
+  color: #bd5525;
+  flex-shrink: 0;
+}
+
+.login-modal-field input {
+  padding: 12px 16px;
+  border: 2px solid #ede6db;
+  border-radius: 10px;
+  font-family: var(--glida);
+  font-size: 14px;
+  color: #2d1a0e;
+  background: #faf8f5;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  width: 100%;
+}
+
+.login-modal-field input::placeholder {
+  color: #c0a88a;
+}
+
+.login-modal-field input:focus {
+  border-color: #bd5525;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(189, 85, 37, 0.1);
+}
+
+/* ── Password wrap ────────────────────────────────────── */
+.login-modal-password-wrap {
+  position: relative;
+  display: flex;
+}
+
+.login-modal-password-wrap input {
+  padding-right: 46px;
+}
+
+.login-modal-eye-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: #c0a88a;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.login-modal-eye-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.login-modal-eye-btn:hover {
+  color: #bd5525;
+}
+
+/* ── Error ────────────────────────────────────────────── */
+.login-modal-error {
+  font-size: 13px;
+  color: #c0392b;
+  background: #fdf0ee;
+  border: 1.5px solid #f5c6c0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 0;
+}
+
+/* ── Submit button ────────────────────────────────────── */
+.login-modal-submit {
+  padding: 14px;
+  background: linear-gradient(135deg, #bd5525 0%, #9e4520 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--glida);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.1s, opacity 0.2s;
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 16px rgba(189, 85, 37, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.login-modal-submit:hover:not(:disabled) {
+  box-shadow: 0 6px 22px rgba(189, 85, 37, 0.45);
+  transform: translateY(-1px);
+}
+
+.login-modal-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.login-modal-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ── Spinner ──────────────────────────────────────────── */
+.login-modal-spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: lm-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes lm-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Divider ──────────────────────────────────────────── */
+.login-modal-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0 18px;
+}
+
+.login-modal-divider::before,
+.login-modal-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #ede6db;
+}
+
+.login-modal-divider span {
+  font-size: 12px;
+  color: #b09880;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+/* ── Contact section ──────────────────────────────────── */
+.login-modal-contact {
+  text-align: center;
+}
+
+.login-modal-contact-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #7a5c3a;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0 0 14px;
+}
+
+.login-modal-contact-options {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.login-modal-contact-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5a3a1e;
+  text-decoration: none;
+  padding: 10px 16px;
+  border: 2px solid #ede6db;
+  border-radius: 10px;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  flex: 1;
+}
+
+.login-modal-contact-link svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.login-modal-contact-link:hover {
+  border-color: #bd5525;
+  color: #bd5525;
+  background: #fdf7f3;
+}
+
+.login-modal-whatsapp-link {
+  color: #128c7e;
+  border-color: #b8e8d0;
+}
+
+.login-modal-whatsapp-link:hover {
+  border-color: #25d366;
+  color: #128c7e;
+  background: #f0faf5;
+}

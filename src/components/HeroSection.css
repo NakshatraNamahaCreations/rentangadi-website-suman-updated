@@ -1,0 +1,480 @@
+/* Hero Section - image pulled up to main-nav-bar */
+
+.hero {
+  position: relative;
+  overflow: visible;
+  margin-top: -116px;
+  font-family: var(--glida);
+}
+
+.hero-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-image-only {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Overlay */
+.hero-image-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(92, 51, 23, 0.85) 0%,   /* brown (top) */
+    rgba(92, 51, 23, 0.75) 30%,
+    rgba(255, 255, 255, 0.14) 70%,
+    rgba(255, 255, 255, 0.12) 100% /* white (bottom) */
+  );
+} 
+
+/* Centered title - elegant wedding style */
+.hero-title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -120%);
+  margin: 0;
+  padding: 0 24px;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  font-style: italic;
+  color: #f5f0e8;
+  text-align: center;
+  z-index: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hero-title::before,
+.hero-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(250, 248, 245, 0.8), transparent);
+}
+
+.hero-title::before {
+  top: -24px;
+}
+
+.hero-title::after {
+  bottom: -24px;
+}
+
+/* Original hero styles commented - see git history to restore */
+
+/* Decorative beige oval in background */
+.hero-bg-circle {
+  position: absolute;
+  right: 27%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38vw;
+  height: 38vw;
+  max-width: 680px;
+  max-height: 600px;
+  background: #f5f0e8;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.hero-left {
+  padding-left: 0;
+}
+
+
+/* Right content - product area, pushed to the right */
+.hero-right {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hero-product {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.hero-images {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  min-height: 520px;
+  margin-right: -80px;
+  padding-right: 0;
+}
+
+.hero-img {
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Chair - larger size, single image, slight left shift, rotated so right armrest tilts left */
+.hero-img-chair {
+  width: 540px;
+  min-width: 540px;
+  flex: 0 0 540px;
+  align-self: flex-end;
+  transform: translateX(-78px) rotate(0deg);
+}
+
+.hero-price {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.hero-product-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+}
+
+.hero-buy {
+  font-size: 0.9rem;
+  color: #8b7355;
+  text-decoration: none;
+  font-weight: 500;
+  margin-bottom: 16px;
+  transition: color 0.2s;
+}
+
+.hero-buy:hover {
+  color: #7a6449;
+}
+
+.hero-badge {
+  position: absolute;
+  bottom: 20%;
+  right: 10%;
+  background: #f5f0e8;
+  color: #1a1a1a;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 50%;
+  min-width: 70px;
+}
+
+/* Search bar */
+.hero-search-wrap {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 580px;
+  padding: 0 16px;
+  z-index: 100;
+}
+
+.hero-search-form {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 252, 247, 0.96);
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  padding: 6px 6px 6px 18px;
+  gap: 8px;
+  margin-bottom: -100px;
+  position: relative;
+}
+
+.hero-search-icon {
+  width: 18px;
+  height: 18px;
+  color: #bd5525;
+  flex-shrink: 0;
+}
+
+.hero-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--glida);
+  font-size: 14.5px;
+  color: #2d1a0e;
+  outline: none;
+  min-width: 0;
+}
+
+.hero-search-input::placeholder {
+  color: #a08868;
+}
+
+.hero-search-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.hero-search-btn {
+  flex-shrink: 0;
+  padding: 9px 22px;
+  background: #bd5525;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--glida);
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.hero-search-btn:hover {
+  background: #9e4520;
+}
+
+.hero-search-clear {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #a08868;
+  font-size: 13px;
+  padding: 0 4px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.hero-search-clear:hover { color: #bd5525; }
+
+/* Search dropdown */
+.hero-search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 14px;
+  z-index: 999;
+  background: #fff;
+  border: 1.5px solid #d8cfc4;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  max-height: 360px;
+  overflow-y: auto;
+  z-index: 100;
+  animation: hero-dropdown-in 0.15s ease;
+}
+
+@keyframes hero-dropdown-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-search-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #f0ebe4;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--glida);
+  transition: background 0.15s;
+}
+
+.hero-search-item:last-child { border-bottom: none; }
+
+.hero-search-item:hover {
+  background: #faf5ef;
+}
+
+.hero-search-item-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #f0ebe4;
+  flex-shrink: 0;
+}
+
+.hero-search-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.hero-search-item-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #2d1a0e;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-search-item-price {
+  font-size: 12px;
+  font-weight: 600;
+  color: #bd5525;
+}
+
+.hero-search-no-results {
+  padding: 20px 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #888;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-title {
+    letter-spacing: 0.1em;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    letter-spacing: 0.08em;
+    padding: 0 16px;
+  }
+
+  .hero-title::before,
+  .hero-title::after {
+    width: 50px;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .hero-right {
+    justify-content: center;
+  }
+
+  .hero-product {
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-images {
+    margin-right: 0;
+    min-height: auto;
+    justify-content: center;
+  }
+
+  .hero-img-chair {
+    width: 380px;
+    min-width: 380px;
+    transform: none;
+  }
+
+  .hero-bg-circle {
+    right: 50%;
+    transform: translate(50%, -50%);
+    width: 60vw;
+    height: 60vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    margin-top: 0px;
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+    transform: translate(-50%, -130%);
+    width: 300px;
+    font-weight: bold;
+  }
+
+  .hero-images {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-img-chair {
+    width: 280px;
+    min-width: 280px;
+  }
+
+  .hero-badge {
+    bottom: 10%;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  .hero-search-wrap {
+    bottom: 5%;
+    max-width: 90%;
+  }
+
+  .hero-search-form {
+    flex-direction: row;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.3rem;
+    letter-spacing: 0.06em;
+  }
+
+  .hero-img-chair {
+    width: 220px;
+    min-width: 220px;
+  }
+
+  .hero-bg-circle {
+    width: 80vw;
+    height: 80vw;
+  }
+
+  .hero-search-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .hero-search-input {
+    font-size: 13px;
+  }
+}

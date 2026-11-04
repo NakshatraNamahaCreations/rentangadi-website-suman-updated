@@ -1,0 +1,165 @@
+/* Footer - Matches site theme: beige, #3E4A5E, Gilda Display */
+
+.footer {
+  background: #f0e9e0;
+  border-top: 1px solid #e5ddd2;
+  padding: 48px 24px 0;
+  font-family: var(--glida);
+  margin-top: 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1.2fr;
+  gap: 48px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #e5ddd2;
+}
+
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    grid-column: 1;
+    align-items: center;
+  }
+
+  .footer-links,
+  .footer-contact {
+    text-align: left;
+  }
+
+  .footer-contact-list {
+    align-items: center;
+  }
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-logo {
+  display: inline-block;
+}
+
+.footer-logo-img {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-tagline {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 280px;
+}
+
+@media (max-width: 900px) {
+  .footer-tagline {
+    max-width: none;
+  }
+}
+
+.footer-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgb(189, 85, 37);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 20px;
+}
+
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-list li {
+  margin-bottom: 12px;
+}
+
+.footer-list a,
+.footer-list span {
+  font-size: 0.95rem;
+  color: #555;
+  text-decoration: none;
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-list a:hover {
+  color: #8b7355;
+}
+
+.footer-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-contact-list span {
+  cursor: default;
+}
+
+.footer-bottom {
+  padding: 24px 0;
+  text-align: center;
+}
+
+.footer-copyright {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 6px;
+}
+
+.footer-dev {
+  font-size: 0.82rem;
+  color: #999;
+  margin: 0;
+}
+
+.footer-dev-link {
+  color: #bd5525;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.footer-dev-link:hover {
+  color: #9e4520;
+  text-decoration: underline;
+}

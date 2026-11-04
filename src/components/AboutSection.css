@@ -1,0 +1,342 @@
+/* About Section - Image collage left, text right */
+
+.about-section {
+  /* Clear sticky header (~2-row) so top of collage isn’t hidden under the header */
+  padding-top:40px;
+  padding-bottom: 40px;
+  scroll-margin-top: 120px;
+  background: #fff;
+  font-family: var(--glida);
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: stretch;
+}
+
+/* Left column - image collage */
+.about-image-col {
+  position: relative;
+  min-height: 420px;
+  align-self: stretch;
+}
+
+.about-image-main-wrap {
+  position: sticky;
+  /* Must match header height; 80px was too small and clipped under the sticky header */
+  top: 120px;
+  width: 100%;
+  
+  aspect-ratio: 4/5;
+  max-height: 470px;
+  border-radius: 57px;
+  
+  overflow: hidden;
+}
+
+.about-image-main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  min-height: 120%;
+  max-width: none;
+  object-fit: cover;
+  /* Keep focal area slightly lower so parallax doesn’t expose empty strip at top */
+  object-position: 50% 55%;
+  display: block;
+  border-radius: inherit;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Experience card overlay - bottom-left */
+.about-card {
+  position: absolute;
+  bottom: 28px;
+  left: -30px;
+  padding: 14px 20px 14px 14px;
+  background: #f5f0e8;
+  border-radius: 8px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.12);
+  display: flex;
+  gap: 12px;
+  border: 2px solid rgb(189, 85, 37);
+  align-items: center;
+  max-width: max-content;
+  z-index: 2;
+  animation: fadeInUp 0.6s ease-out 0.3s both;
+}
+
+.about-card-icon {
+  width: 56px;
+  min-width: 56px;
+  height: 56px;
+  background: #f5f0e8;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: rgb(189, 85, 37);
+}
+
+.about-card-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.about-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.about-card-number {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1;
+}
+
+.about-card-label {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #666;
+}
+
+/* Overlapping image - top-right (image__card__image style) */
+.about-image-overlay {
+  position: absolute;
+  /* Less negative top so inset card isn’t pushed under the page header */
+  top: 8px;
+  right: -60px;
+  width: 300px;
+  z-index: 1;
+  background-color: #fff;
+  border: 8px solid #f5f0e8;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+.about-image-overlay img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Right column - text */
+.about-text-col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 30px;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.about-flower-decor {
+  position: absolute;
+  top: -6px;
+  right: -13px;
+  width: 240px;
+  height: 240px;
+  opacity: 0.2;
+  mix-blend-mode: multiply;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about-flower-decor img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top right;
+}
+
+.about-text-content {
+  position: relative;
+  z-index: 1;
+}
+
+.about-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 1.2rem;
+  font-weight: 700 !important;
+  color: rgb(189, 85, 37);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+  justify-content: center;
+}
+
+.about-label::before {
+  content: "";
+  width: 50px;
+  height: 2px;
+  background: rgb(189, 85, 37);
+}
+
+.about-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 24px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.about-body {
+  max-width: 520px;
+}
+
+.about-desc {
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.7;
+  margin: 0 0 1.15em;
+  max-width: 520px;
+}
+
+.about-body .about-desc:last-of-type {
+  margin-bottom: 28px;
+}
+
+.about-btn {
+  display: inline-block;
+  padding: 6px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(189, 85, 37);
+  background: #f5f0e8;
+  border: 2px solid rgb(189, 85, 37);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-family: var(--glida);
+}
+
+.about-btn:hover {
+  background: rgb(189, 85, 37);
+  border-color: rgb(189, 85, 37);
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .about-wrapper {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about-image-col {
+    order: 1;
+    min-height: 360px;
+  }
+
+  .about-image-overlay {
+    right: -30px;
+    top: 6px;
+    width: 210px;
+    border-width: 6px;
+  }
+
+  .about-text-col {
+    order: 2;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about-flower-decor {
+    width: 150px;
+    height: 150px;
+    top: -10px;
+    right: -20px;
+    opacity: 0.3;
+  }
+
+  .about-label::before {
+    display: none;
+  }
+
+  .about-desc {
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-section {
+    padding: 100px 20px 64px;
+    scroll-margin-top: 100px;
+  }
+
+  .about-image-main-wrap {
+    aspect-ratio: 4/5;
+    max-height: 380px;
+    top: 100px;
+  }
+
+  .about-card {
+    bottom: 12px;
+    left: 6px;
+    padding: 10px 14px 10px 10px;
+  }
+
+  .about-card-icon {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+  }
+
+  .about-card-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .about-flower-decor {
+    width: 120px;
+    height: 120px;
+    opacity: 0.25;
+  }
+
+  .about-card-number {
+    font-size: 1.15rem;
+  }
+
+  .about-card-label {
+    font-size: 0.75rem;
+  }
+
+  .about-image-overlay {
+    width: 170px;
+    right: -20px;
+    top: -30px;
+    border-width: 5px;
+  }
+}
