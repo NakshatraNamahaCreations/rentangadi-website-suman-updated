@@ -531,3 +531,91 @@
 .mobile-close-btn:hover {
   color: #9e4520;
 }
+/* ---------------------------------------------------------------------
+   Log out, asked before it happens
+   Signing out clears the cart and the enquiries this browser remembers,
+   and the button sits beside the cart - so it is worth one question.
+--------------------------------------------------------------------- */
+.logout-confirm {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  /* Above the sticky header, which sits at 1650 on a phone, and above the
+     phone tab bar at 1400. */
+  z-index: 1800;
+}
+
+.logout-confirm__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.logout-confirm__box {
+  position: relative;
+  width: min(380px, 100%);
+  padding: 26px 24px 20px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+  text-align: center;
+}
+
+.logout-confirm__title {
+  margin: 0 0 8px;
+  font-family: var(--glida);
+  font-size: 1.35rem;
+  color: #2b2b2b;
+}
+
+.logout-confirm__text {
+  margin: 0 0 20px;
+  font-size: 0.95rem;
+  color: #6b6b6b;
+}
+
+.logout-confirm__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.logout-confirm__btn {
+  flex: 1;
+  padding: 11px 14px;
+  border-radius: 10px;
+  border: 1.5px solid transparent;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.logout-confirm__btn.is-ghost {
+  border-color: rgba(189, 85, 37, 0.3);
+  background: #fff;
+  color: #bd5525;
+}
+
+.logout-confirm__btn.is-ghost:hover {
+  background: rgba(189, 85, 37, 0.08);
+}
+
+.logout-confirm__btn.is-primary {
+  background: #bd5525;
+  color: #fff;
+}
+
+.logout-confirm__btn.is-primary:hover {
+  background: #a4471d;
+}
+
+/* A phone keeps the same box; only the room around it changes. */
+@media (max-width: 480px) {
+  .logout-confirm__box {
+    padding: 22px 18px 16px;
+  }
+}

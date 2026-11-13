@@ -999,9 +999,12 @@ img {
   color: #15803D;
 }
 
+/* Called off - the one state worth a colour, so a client reading their own
+   list cannot miss it. The same red the admin panel uses. */
 .enq-status.is-cancelled {
-  background: #F3F4F6;
-  color: #6B7280;
+  background: #FEF2F3;
+  color: #DC3545;
+  text-decoration: line-through;
 }
 
 .enq-status.is-placed {

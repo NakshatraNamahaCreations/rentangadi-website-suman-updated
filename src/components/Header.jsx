@@ -45,12 +45,28 @@ function Header() {
     }
   }, [])
 
+  const [confirmLogout, setConfirmLogout] = useState(false)
+
+  /* Escape closes it, as it does every other dialog on the site. */
+  useEffect(() => {
+    if (!confirmLogout) return
+    const onKey = (e) => {
+      if (e.key === 'Escape') setConfirmLogout(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [confirmLogout])
+
   const isHome = !showProductsPage && !showAboutPage && !showContactPage && !showOrdersPage && !showCartPage && !showConfirmedOrdersPage
 
   const openEnquiriesCount = countOpenEnquiriesForUser(placedOrders, auth.userId)
   const confirmedCount = countConfirmedEnquiriesForUser(placedOrders, auth.userId)
 
+  /* Signing out throws away the cart and the enquiries kept in this
+     browser, and the icon sits next to the cart button - easy to hit by
+     mistake. So it asks first. */
   const handleLogout = () => {
+    setConfirmLogout(false)
     clearOnLogout()
     localStorage.removeItem('token')
     localStorage.removeItem('user')
@@ -215,7 +231,9 @@ function Header() {
                     <button
                       type="button"
                       className="nav-logout-btn"
-                      onClick={handleLogout}
+                      onClick={() => setConfirmLogout(true)}
+                      aria-label="Log out"
+                      title="Log out"
                     >
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
                         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
@@ -248,6 +266,45 @@ function Header() {
 
       {showLoginModal && (
         <LoginModal onClose={() => setShowLoginModal(false)} />
+      )}
+
+      {confirmLogout && (
+        <div
+          className="logout-confirm"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="logout-confirm-title"
+        >
+          <div
+            className="logout-confirm__backdrop"
+            onClick={() => setConfirmLogout(false)}
+          />
+          <div className="logout-confirm__box">
+            <h3 className="logout-confirm__title" id="logout-confirm-title">
+              Log out?
+            </h3>
+            <p className="logout-confirm__text">
+              Are you sure you want to log out?
+            </p>
+            <div className="logout-confirm__actions">
+              <button
+                type="button"
+                className="logout-confirm__btn is-ghost"
+                onClick={() => setConfirmLogout(false)}
+                autoFocus
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                className="logout-confirm__btn is-primary"
+                onClick={handleLogout}
+              >
+                Log out
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </>
   )
